@@ -4,16 +4,24 @@ pipeline {
         stage('Test Email') {
             steps {
                 script {
-                    echo 'Trying to send test email...'
-                    emailext (
-                        from: 'drlakshmi90@gmail.com',
-                        subject: "Test Email from Jenkins",
-                        body: "This is a test email sent from Jenkins.",
-                        to: 'drlakshmi90@gmail.com'
+                    emailext(
+                        to: 'drlakshmi90@gmail.com',
+                        subject: "✅ Jenkins Email Test",
+                        body: "🎉 This is a test email from the Jenkins pipeline.",
+                        mimeType: 'text/html'
                     )
-                    echo 'Email attempted'
                 }
             }
+        }
+    }
+    post {
+        failure {
+            emailext(
+                to: 'drlakshmi90@gmail.com',
+                subject: "❌ Jenkins Build Failed",
+                body: "The build has failed. Please check the logs.",
+                mimeType: 'text/html'
+            )
         }
     }
 }
