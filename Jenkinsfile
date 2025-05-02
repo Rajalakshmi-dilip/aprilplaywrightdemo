@@ -1,17 +1,21 @@
 pipeline {
     agent { label 'agent-1' }
     stages {
-        stage('Test Email') {
+        stage('Dummy') {
             steps {
-                script {
-                    emailext (
-                        subject: "Test Email from Jenkins",
-                        body: "This is a test email sent from Jenkins.",
-                        to: 'drlakshmi90@gmail.com',
-                        mimeType: 'text/plain'
-                    )
-                }
+                echo 'Just a dummy stage'
             }
+        }
+    }
+    post {
+        success {
+            emailext (
+                from: 'your_email@gmail.com',
+                subject: "Build Success",
+                body: "This is a success email from Jenkins.",
+                to: 'drlakshmi90@gmail.com',
+                mimeType: 'text/plain'
+            )
         }
     }
 }
