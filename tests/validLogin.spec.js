@@ -12,9 +12,10 @@ test('@regression Login Test with data from JSON', async ({ page }) => {
   await page.getByTestId(locators.emailInput).fill(email);
   await page.getByTestId(locators.passwordInput).fill(password);
   await page.getByTestId(locators.submitButton).click();
+  await page.waitForTimeout(3000);
   // Assertion: Check if the URL contains 'dashboard'
   
-  await expect(page).toHaveURL(/.*dashboard/); 
+  await expect(page).toHaveURL(/.*dashboard.*/);
   await page.waitForTimeout(3000);
 
 });

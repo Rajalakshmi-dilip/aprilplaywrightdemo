@@ -3,7 +3,7 @@ const locators = require('./locators');
 const testData = require('./loginData.json'); // Importing test data from a JSON file
 
 //Using Page Object Model and test data from JSON file
-test('@regressionLogout the application', async ({ page }) => {
+test('@regression Logout the application', async ({ page }) => {
   const { email, password } = testData.validLogin;
 
   await page.goto('https://ecommerce-admin.azureedge.net/login');
