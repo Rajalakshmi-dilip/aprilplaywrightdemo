@@ -4,19 +4,19 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                sh 'npm ci' // or 'npm install'
+                bat 'npm ci' // or 'npm install'
             }
         }
 
         stage('Run Tests') {
             steps {
-                sh 'npx playwright test tests/validLogin.spec.js'
+                bat 'npx playwright test tests/validLogin.spec.js'
             }
         }
 
         stage('Generate HTML Report') {
             steps {
-                sh 'npx playwright show-report --output=playwright-report'
+                bat 'npx playwright show-report --output=playwright-report'
             }
         }
     }
