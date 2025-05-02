@@ -8,7 +8,7 @@ pipeline {
                     emailext (
                         subject: "Build Started: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                         body: "Build is now running: ${env.BUILD_URL}",
-                        to: 'rajalakshmi.d@optisolbusiness.com'
+                        to: 'drlakshmi90@gmail.com'
                     )
                 }
             }
@@ -50,7 +50,7 @@ pipeline {
             emailext (
                 subject: "✅ Build Success: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: "Good news! Build succeeded: ${env.BUILD_URL}",
-                to: 'rajalakshmi.d@optisolbusiness.com'
+                to: 'drlakshmi90@gmail.com'
             )
         }
 
@@ -58,7 +58,7 @@ pipeline {
             emailext (
                 subject: "❌ Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: "Oh no! Build failed: ${env.BUILD_URL}",
-                to: 'rajalakshmi.d@optisolbusiness.com'
+                to: 'drlakshmi90@gmail.com'
             )
         }
     }
