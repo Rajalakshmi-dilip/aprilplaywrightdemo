@@ -1,10 +1,10 @@
 pipeline {
-    agent any
+    agent { label 'agent-1' }
 
     stages {
         stage('Install Dependencies') {
             steps {
-                sh 'npm ci'  // or 'npm install'
+                sh 'npm ci' // or 'npm install'
             }
         }
 
