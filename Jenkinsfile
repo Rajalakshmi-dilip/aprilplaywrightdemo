@@ -10,7 +10,7 @@ pipeline {
     post {
         success {
             emailext (
-                from: 'your_email@gmail.com',
+                from: 'drlakshmi90@gmail.com',
                 subject: "Build Success",
                 body: "This is a success email from Jenkins.",
                 to: 'drlakshmi90@gmail.com',
