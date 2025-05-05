@@ -2,7 +2,6 @@ pipeline {
     agent { label 'agent-1' }
 
     environment {
-        // Optionally define Node or other environment variables here
         PLAYWRIGHT_HTML_REPORT = 'playwright-report'
     }
 
@@ -10,14 +9,14 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo 'Installing project dependencies...'
-                sh 'npm ci'
+                bat 'npm ci'
             }
         }
 
         stage('Run Single Test Spec') {
             steps {
                 echo 'Running validLogin.spec.js using Playwright...'
-                sh 'npx playwright test tests/validLogin.spec.js --reporter=html'
+                bat 'npx playwright test tests/validLogin.spec.js --reporter=html'
             }
         }
 
