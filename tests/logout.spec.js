@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
-const locators = require('./locators');
-const testData = require('./loginData.json'); // Importing test data from a JSON file
+const locators = require('../utils/locators');
+const testData = require('../data/loginData.json'); // Importing test data from a JSON file
 
 //Using Page Object Model and test data from JSON file
 test('@regression Logout the application', async ({ page }) => {
@@ -12,6 +12,7 @@ test('@regression Logout the application', async ({ page }) => {
   await page.getByTestId(locators.emailInput).fill(email);
   await page.getByTestId(locators.passwordInput).fill(password);
   await page.getByTestId(locators.submitButton).click();
+  
   // Assertion: Check if the URL contains 'dashboard'
   
   await expect(page).toHaveURL(/.*dashboard/); 

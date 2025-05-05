@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
-const locators = require('./locators');
-const loginData = require('./loginData.json'); // Importing test data from a JSON file
+const locators = require('../utils/locators');
+const testData = require('../data/loginData.json'); // Importing test data from a JSON file
 
 //Using Page Object Model and test data from JSON file
 test('Login Test with data from JSON', async ({ page }) => {

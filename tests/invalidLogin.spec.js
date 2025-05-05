@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
-const locators = require('./locators');
-const testData = require('./loginData.json');
+const locators = require('../utils/locators');
+const testData = require('../data/loginData.json');
 
 test('@regression Invalid Login - Wrong Credentials', async ({ page }) => {
   const { email, password } = testData.invalidLogin;

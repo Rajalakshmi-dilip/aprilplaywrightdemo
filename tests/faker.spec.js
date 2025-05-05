@@ -1,10 +1,10 @@
 const { test, expect } = require('@playwright/test');
-const locators = require('./locators');
-const loginData = require('./loginData.json');
+const locators = require('../utils/locators');
+const testData = require('../data/loginData.json');
 const { faker } = require('@faker-js/faker'); // Import Faker
 
 test('Login and Create Employee with Faker Data', async ({ page }) => {
-  const { email, password } = loginData.validLogin;
+  const { email, password } = testData.validLogin;
 
   // Generate dynamic data
   const firstName = faker.person.firstName();

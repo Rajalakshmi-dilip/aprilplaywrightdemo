@@ -7,4 +7,5 @@ test('test', async ({ page }) => {
   await page.getByTestId('email-input').fill('ecommerceadmin@yopmail.com');
   await page.getByTestId('password-input').fill('Test@123');
   await page.getByTestId('submit').click();
+
 });
