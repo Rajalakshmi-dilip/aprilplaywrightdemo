@@ -1,21 +1,42 @@
 pipeline {
     agent { label 'agent-1' }
+
+    environment {
+        // Optionally define Node or other environment variables here
+        PLAYWRIGHT_HTML_REPORT = 'playwright-report'
+    }
+
     stages {
-        stage('Dummy') {
+        stage('Install Dependencies') {
             steps {
-                echo 'Just a dummy stage'
+                echo 'Installing project dependencies...'
+                sh 'npm ci'
+            }
+        }
+
+        stage('Run Single Test Spec') {
+            steps {
+                echo 'Running validLogin.spec.js using Playwright...'
+                sh 'npx playwright test tests/validLogin.spec.js --reporter=html'
+            }
+        }
+
+        stage('Archive Report') {
+            steps {
+                echo 'Archiving Playwright HTML report...'
+                publishHTML (target: [
+                    reportDir: 'playwright-report',
+                    reportFiles: 'index.html',
+                    reportName: 'Playwright Test Report'
+                ])
             }
         }
     }
+
     post {
-        success {
-            emailext (
-                from: 'drlakshmi90@gmail.com', // MUST MATCH the Gmail you used in Jenkins config
-                subject: "Build Success",
-                body: "This is a success email from Jenkins.",
-                to: 'drlakshmi90@gmail.com',
-                mimeType: 'text/plain'
-            )
+        always {
+            echo 'Cleaning up workspace...'
+            cleanWs()
         }
     }
 }
