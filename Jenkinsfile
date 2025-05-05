@@ -15,8 +15,8 @@ pipeline {
 
         stage('Run Single Test Spec') {
             steps {
-                echo 'Running validLogin.spec.js using Playwright...'
-                bat 'npx playwright test tests/validLogin.spec.js --reporter=html'
+                echo 'Running login.spec.js using Playwright...'
+                bat 'npx playwright test tests/login.spec.js --reporter=html'
             }
         }
 

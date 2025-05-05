@@ -1,4 +1,3 @@
-const { chromium } = require('playwright'); // Importing Playwright's chromium module
 const { test, expect } = require('@playwright/test');
 // Using Codegen to generate the test code
 test('test', async ({ page }) => {
